@@ -1,4 +1,5 @@
 require 'json'
+require 'digest/md5'
 require 'open-uri'
 
 module Github
@@ -8,7 +9,12 @@ module Github
     end
 
     def fetch username
-      JSON.parse get username
+      records = JSON.parse get username
+      records.each do |hash|
+        checksum = Digest::MD5.hexdigest Marshal.dump(hash)
+        hash['checksum'] = checksum
+      end
+      records
     end
 
     private
