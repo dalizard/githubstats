@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323155301) do
+ActiveRecord::Schema.define(:version => 20130328192439) do
 
   create_table "actors", :force => true do |t|
     t.string   "name"
@@ -23,9 +23,10 @@ ActiveRecord::Schema.define(:version => 20130323155301) do
     t.integer  "actor_id"
     t.string   "type"
     t.text     "data"
-    t.datetime "github_created_at", :null => false
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "github_created_at",                 :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "checksum",          :default => "", :null => false
   end
 
 end
